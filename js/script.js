@@ -65,19 +65,19 @@ document.addEventListener("DOMContentLoaded" , function() {
         spaceBetween: 15,
       },
 
-     /*500: {
+      500: {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 15,
       },
 
-      570: {
+      576: {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 34,
       },
 
-      1101: {
+      /*1101: {
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 34,
@@ -140,6 +140,17 @@ document.addEventListener("DOMContentLoaded" , function() {
         spaceBetween: 15,
       },
 
+      658: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+
+      765: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 34,
+      }
+
     }
   })
 
@@ -166,15 +177,15 @@ document.addEventListener("DOMContentLoaded" , function() {
     animation: 'scale',
   });
 
-  /**/
+  /*Project swiper*/
 
   const swiperPartners = new Swiper(".project__swiper" , {
     slidesPerView: 2,
     spaceBetween: 50,
 
     navigation: {
-      nextEl: ".project__button-prev",
-      prevEl: ".project__button-next",
+      nextEl: ".project__button-next",
+      prevEl: ".project__button-prev",
     },
 
     breakpoints: {
@@ -184,12 +195,12 @@ document.addEventListener("DOMContentLoaded" , function() {
         spaceBetween: 15,
       },
 
-      /*700: {
+      575: {
         slidesPerView: 2,
         spaceBetween: 34,
       }, 
 
-      1024: {
+      /*1024: {
         slidesPerView: 2,
         spaceBetween: 50,
       },
@@ -200,5 +211,93 @@ document.addEventListener("DOMContentLoaded" , function() {
       }*/
     }
   });
+
+  /*Contact form*/
+
+  var selector = document.querySelector("input[type='tel']");
+  var im = new Inputmask("+7(999) 999-99-99");
+
+  im.mask(selector);
+
+  new JustValidate('.contact__form', {
+    rules: {
+      name: {
+        required: true,
+        minLength: 2,
+        maxLength: 15,
+        strength: {
+          custom: '^[А-Яа-я]+$'
+        }
+      },
+      
+      tel: {
+        required: true,
+        function: (name, value) => {
+          const phone = selector.inputmask.unmaskedvalue()
+          return Number(phone) && phone.length === 10
+        }
+      },
+    },
+
+    messages: {
+      name: 'Недопустимый формат',
+      tel: 'Недопустимый формат'
+    },
+
+    colorWrong: '#D11616',  
+  });
+
+  /*Map*/
+
+  ymaps.ready(init);
+    function init(){
+        
+      var myMap = new ymaps.Map("map", {
+        center: [55.75846806898367,37.60108849999989],
+        zoom: 16,
+        controls: [],
+      },
+
+      {suppressMapOpenBlock: true}
+      ),
+
+      zoomControl = new ymaps.control.ZoomControl({
+        options: {
+          size: 'small',
+          position: {
+            right: 10,
+            bottom: 360,
+          }
+        }
+      });
+
+      myMap.controls.add(zoomControl);
+
+      geolocationControl = new ymaps.control.GeolocationControl ({
+        options: {
+          position: {
+            right: 10,
+            bottom: 320,
+          }
+        }
+      });
+
+      myMap.controls.add(geolocationControl);
+
+      var myPlacemark = new ymaps.Placemark([55.75846806898367,37.60108849999989], {}, {
+        iconLayout: 'default#image',
+        iconImageHref: 'img/map-icon.svg',
+        iconImageSize: [20, 20],
+        iconImageOffset: [-10, 0],
+      });
+      myMap.geoObjects.add(myPlacemark);
+      
+      myMap.controls.remove('searchControl');
+      myMap.controls.remove('trafficControl');
+      myMap.controls.remove('typeSelector');
+      myMap.controls.remove('fullscreenControl');
+      myMap.controls.remove('rulerControl');
+  }
+
 
 })
