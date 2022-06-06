@@ -1,5 +1,19 @@
 document.addEventListener("DOMContentLoaded" , function() {
   
+  /*Scroll*/
+
+  function scrollTo(element, to, duration) {
+    if (duration <= 0) return;
+    let difference = to - element.scrollTop;
+    let perTick = difference / duration * 10;
+
+    setTimeout (function () {
+      element.scrollTop = element.scrollTop + perTick;
+      if (element.scrollTop === to) return;
+      scrollTo(element, to, duration - 10);
+    }, 10);
+  }
+
   /*Burger-nav*/
 
   const burgerNav = document.querySelector(".burger")
@@ -18,6 +32,12 @@ document.addEventListener("DOMContentLoaded" , function() {
     menuNav.classList.remove("header__nav_active")
   }
 
+  if (window.matchMedia('(max-width: 1199px)').matches) {
+    new SimpleBar(document.getElementById('nav-simplebar'), {
+      autoHide: false,
+    });
+  }
+
   /*Search*/
 
   document.querySelector(".search__btn-open").addEventListener("click", function() {
@@ -28,7 +48,7 @@ document.addEventListener("DOMContentLoaded" , function() {
   document.addEventListener("click", function(e) {
     let target = e.target;
     let form = document.querySelector(".search__form");
-    if (!target.closest(".search__top")) {
+    if (!target.closest(".search-top")) {
       form.classList.remove("search__form_active");
         form.querySelector(".search__input").value = "";
         document.querySelector(".search__btn-open").classList.remove("active")
@@ -77,17 +97,11 @@ document.addEventListener("DOMContentLoaded" , function() {
         spaceBetween: 34,
       },
 
-      /*1101: {
+      1200: {
         slidesPerView: 3,
         slidesPerGroup: 3,
-        spaceBetween: 34,
-      },
-
-      1301: {
-        slidesPerView: 3,
-        slidesPerGroup: 3,
-        spaceBetween: 50
-      }*/
+        spaceBetween: 50,
+      }
       
     }
   
@@ -124,8 +138,8 @@ document.addEventListener("DOMContentLoaded" , function() {
   const swiperEvents = new Swiper(".event__swiper" , {
 
     navigation: {
-      nextEl: ".event-button-next",
-      prevEl: ".event-button-prev",
+      nextEl: ".event__button-next",
+      prevEl: ".event__button-prev",
     },
 
     pagination: {
@@ -137,6 +151,7 @@ document.addEventListener("DOMContentLoaded" , function() {
       
       0: {
         slidesPerView: 1,
+        slidesPerGroup: 1,
         spaceBetween: 15,
       },
 
@@ -149,6 +164,18 @@ document.addEventListener("DOMContentLoaded" , function() {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 34,
+      },
+
+      1023: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 27,
+      },
+
+      1200: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 50,
       }
 
     }
@@ -200,15 +227,15 @@ document.addEventListener("DOMContentLoaded" , function() {
         spaceBetween: 34,
       }, 
 
-      /*1024: {
+      1024: {
         slidesPerView: 2,
         spaceBetween: 50,
       },
       
-      1301: {
+      1200: {
         slidesPerView: 3,
         spaceBetween: 50
-      }*/
+      }
     }
   });
 
@@ -297,7 +324,47 @@ document.addEventListener("DOMContentLoaded" , function() {
       myMap.controls.remove('typeSelector');
       myMap.controls.remove('fullscreenControl');
       myMap.controls.remove('rulerControl');
+
+      myMap.behaviors.disable('scrollZoom');
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    myMap.behaviors.disable('drag');
+    }
   }
 
+  //Dropdown
 
+  document.querySelectorAll(".dropdown__simplebar").forEach(dropdown => {
+    new SimpleBar(dropdown, {
+      autoHide: false,
+      scrollbarMaxSize: 25,
+      forceVisible: 'y',
+    });
+
+  })
+ 
+  const btns = document.querySelectorAll(".dropdown__btn");
+  const dropdowns = document.querySelectorAll(".dropdown__inner");
+  const activeClassdropdowns = "dropdown__inner_active";
+  const activeClassbtns = "dropdown__btn_active";
+
+  btns.forEach(item => {
+    item.addEventListener("click", function() {
+      let dropThis = this.parentElement.querySelector(".dropdown__inner");
+      dropdowns.forEach(el => {
+        if (el != dropThis) {
+          el.classList.remove(activeClassdropdowns)
+        }
+      });
+
+      btns.forEach(el => {
+        if(el != this) {
+          el.classList.remove(activeClassbtns)
+        }
+      });
+
+      dropThis.classList.toggle(activeClassdropdowns);
+      this.classList.toggle(activeClassbtns);
+    })
+  })
 })
