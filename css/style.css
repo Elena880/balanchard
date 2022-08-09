@@ -2454,6 +2454,10 @@ h1, h2, h3, h4, p {
     width: 78%;
   }
 
+  .header__nav .simplebar-vertical {
+    opacity: 0;
+  }
+
   .nav__list {
     display: flex;
     justify-content: space-between;
