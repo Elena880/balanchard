@@ -73,13 +73,13 @@ html {
   color: inherit;
 }
 
-ul {
+.list{
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-button {
+.btn {
   padding: 0;
   color: inherit;
   outline: 0;
@@ -88,24 +88,20 @@ button {
   cursor: pointer;
 }
 
-input {
+.input {
   color: inherit;
   outline: 0;
   border: 0;
   background-color: transparent;
 }
 
-img {
+.imge {
   max-width: 100%;
   height: auto;
 }
 
 .img {
   width: 100%;
-}
-
-h1, h2, h3, h4, p {
-  margin: 0;
 }
 
 .container {
@@ -128,7 +124,7 @@ h1, h2, h3, h4, p {
 
 .nav__link:active:not(:focus),
 .login__link:active,
-.ui-accordion-header-active .accordion__title,
+.ui-accordion-header-active .accordion__title:not(:hover),
 .tab__btn:active:not(:focus-visible),
 .tab__btn_active:not(:focus-visible),
 .artist-demo__link:active,
@@ -149,17 +145,17 @@ h1, h2, h3, h4, p {
   margin-bottom: 51px;
 }
 
-.hero__title,
 .about__title,
 .gallery__title,
 .event__title,
 .project__title,
 .project__subtitle {
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
 }
 
 
 .title {
+  margin: 0;
   font-size: 28px;
   line-height: 38px;
   font-weight: normal;
@@ -420,37 +416,21 @@ h1, h2, h3, h4, p {
 .hero {
   color: var(--color-white);
   background: url("../img/hero-bg.webp") no-repeat 50% 62% / 100%;
-  animation: bg-hero infinite 10s linear;
-}
-
-@keyframes bg-hero {
-  0% {
-    background-size: 100%;
-  }
-
-  25% {
-    background-size: 125%;
-  }
-
-  50% {
-    background-size: 150%;
-  }
-
-  75% {
-    background-size: 125%;
-  }
-
-  100% {
-    background-size: 100%;
-  }
 }
 
 .hero__container {
-  padding: 34px 13px 57px;
+  padding: 30px 21px 59px;
   text-align: center;
 }
 
+.hero__title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 44px;
+}
+
 .hero__text {
+  margin-top: 0;
   font-size: 12px;
   line-height: 16px;
 }
@@ -501,10 +481,11 @@ h1, h2, h3, h4, p {
 /*About*/ 
 
 .main__about {
-  margin-bottom: 41px;
+  margin-bottom: 39px;
 }
 
 .about__text {
+  margin-bottom: 0;
   font-size: 14px;
   line-height: 28px;
 }
@@ -526,7 +507,7 @@ h1, h2, h3, h4, p {
 }
 
 .filter__title {
-  margin-bottom: 5px;
+  margin: 12px 0 5px 0;
   font-size: 16px;
   line-height: 32px;
   font-weight: 600;
@@ -822,7 +803,7 @@ h1, h2, h3, h4, p {
 .accordion__title {
   position: relative;
   z-index: 1;
-  margin-right: auto;
+  margin: 0 auto 0 0;
   font-size: 18px;
   line-height: 32px;
   font-weight: 600;
@@ -977,20 +958,21 @@ h1, h2, h3, h4, p {
 }
 
 .tab-content__name {
-  margin: 16px 0 15px;
+  margin: 16px 0 0;
   font-size: 24px;
   line-height: 33px;
   font-weight: 600;
 }
 
 .tab-content__year {
-  margin-bottom: 6px;
+  margin: 9px 0 13px;
   font-size: 12px;
   line-height: 16px;
   color: var(--color-gray-2);
 }
 
 .tab-content__text {
+  margin: 0;
   width: 99%;
   font-size: 16px;
   line-height: 32px;
@@ -1000,6 +982,10 @@ h1, h2, h3, h4, p {
 
 .main__event {
   margin-bottom: 47px;
+}
+
+.event__title {
+  margin-bottom: 11px;
 }
 
 .event__slide {
@@ -1018,11 +1004,12 @@ h1, h2, h3, h4, p {
 }
 
 .event__inner {
-  padding: 15px 17px 0 23px; 
+  padding: 15px 24px 0 24px; 
 }
 
 .event__place,
 .event__time {
+  margin: 0 -5px 0 0;
   font-size: 12px;
   line-height: 16px;
   text-align: right;
@@ -1036,13 +1023,14 @@ h1, h2, h3, h4, p {
 
 .event__subtitle {
   width: 99%;
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
   font-size: 24px;
   line-height: 33px;
   font-weight: 600;
 }
 
 .event__discription {
+  margin: 0;
   width: 95%;
   font-size: 16px;
   line-height: 32px;
@@ -1126,7 +1114,7 @@ h1, h2, h3, h4, p {
 /*Project*/
 
 .project__text {
-  margin-bottom: 10px;
+  margin: 12px 0 50px;
   font-size: 16px;
   line-height: 32px;
 }
@@ -1403,13 +1391,14 @@ h1, h2, h3, h4, p {
 }
 
 .address__company-name {
-  margin-bottom: -2px;
+  margin:  0 0 4px 0;
   font-size: 18px;
   line-height: 25px;
   font-weight: 600;
 }
 
 .address__text {
+  margin: 0 0 18px;
   font-size: 14px;
   line-height: 19px;
 }
@@ -1477,7 +1466,7 @@ h1, h2, h3, h4, p {
 }
 
 .messenger__title {
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
   font-weight: 400;
   font-size: 18px;
   line-height: 32px;
@@ -1544,7 +1533,7 @@ h1, h2, h3, h4, p {
 }
 
 .socials__item:not(:last-child) {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .socials__link  svg {
@@ -1776,7 +1765,7 @@ h1, h2, h3, h4, p {
   /*Catalog*/
 
   .main__catalog {
-    margin-bottom: 69px;
+    margin-bottom: 79px;
   }
 
   .catalog__title {
@@ -1836,8 +1825,12 @@ h1, h2, h3, h4, p {
     font-weight: 600;
   }
 
+  .tab-content__year {
+    margin-bottom: 7px;
+  }
+
   .tab-content__name {
-    margin: 27px 0 10px;
+    margin-top: 18px;
   }
 
   .tab-content__text {
@@ -1856,7 +1849,7 @@ h1, h2, h3, h4, p {
 
   .event__inner {
     padding-top: 11px;
-    padding-left: 38px;
+    padding-left: 34px;
   }
 
   .event__time {
@@ -1868,7 +1861,7 @@ h1, h2, h3, h4, p {
   }
 
   .event__bottom {
-    left: 38px;
+    left: 34px;
   }
 
   .event__pagination {
@@ -1953,13 +1946,8 @@ h1, h2, h3, h4, p {
   }
 
   .address__company-name {
-    margin-bottom: 3px;
+    margin-bottom: 8px;
     font-size: 24px;
-    line-height: 32px;
-  }
-
-  .address__text {
-    font-size: 16px;
     line-height: 32px;
   }
 
@@ -2050,8 +2038,9 @@ h1, h2, h3, h4, p {
     }
       
     .hero__title {
+      margin-bottom: -6px;
       font-size: 72px;
-      line-height: 84px;
+      line-height: 93px;
     }
   
     .hero__text {
@@ -2246,7 +2235,7 @@ h1, h2, h3, h4, p {
     background-color: var(--color-purple-3);
   }
 
-  .accordion__header:hover .accordion__title {
+  .accordion__header:hover .accordion__title:not(.ui-accordion-header-active) {
     color: var(--color-purple);
   }
 
@@ -2440,6 +2429,15 @@ h1, h2, h3, h4, p {
 }
 
 @media (min-width: 1024px) {
+
+  .tab-content__name {
+    margin: 29px 0 10px;
+  }
+
+  .tab-content__text {
+    margin-top: 12px;
+  }
+  
   .contact__lable {
     margin-bottom: 0;
   }
@@ -2469,16 +2467,18 @@ h1, h2, h3, h4, p {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 1250px;
+    margin: 0 0 0 auto;
     width: 78%;
   }
 
   .nav__list {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 0;
-    width: 60.4%;
+    margin-right: auto;
+  }
+
+  .nav__item:not(:last-child) {
+    margin-right: 63px;
   }
 
   .nav__link {
@@ -2524,19 +2524,22 @@ h1, h2, h3, h4, p {
 
   .container-dropdown {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 100%;
   }
 
   .dropdown {
     display: flex;
-    justify-content: space-between;
-    width: 63.6%;
+    margin-right: auto;
+  }
+
+  .dropdown__item:not(:last-child) {
+    margin-right: 66px;
   }
 
   .dropdown__item {
     position: relative;
+    padding-right: 15.44px;
   }
 
   .dropdown__btn {
@@ -2798,12 +2801,12 @@ h1, h2, h3, h4, p {
   }
 
   .hero__container {
-    padding: 143px 0 145px;
-    width: 38%;
+    padding: 138px 0 145px;
+    width: 34%;
   }
 
   .hero__title {
-    margin-bottom: 14px;
+    margin-bottom: 0;
   }
 
   .hero__text {
@@ -2813,7 +2816,7 @@ h1, h2, h3, h4, p {
   /*About*/
 
   .about__container {
-    width: 67.1%;
+    max-width: 1080px;
   }
 
   /*Gallery*/
@@ -2964,6 +2967,10 @@ h1, h2, h3, h4, p {
     max-width: 400px;
   }
 
+  .event__discription {
+    margin-top: 12px;
+  }
+
   .event__bottom {
     left: 50px;
     bottom: 6%;
@@ -3004,14 +3011,17 @@ h1, h2, h3, h4, p {
     fill: var(--color-white);
   }
 
+  /*Contact*/
+
+  .address__text {
+    font-size: 16px;
+    line-height: 32px;
+  }
+
   /*Footer*/
 
   .footer {
     padding: 49px 0 45px;
-  }
-
-  .socials__item:not(:last-child) {
-    margin-right: 20px;
   }
 
   .socials__link svg {
@@ -3022,6 +3032,11 @@ h1, h2, h3, h4, p {
 }
 
 @media (min-width: 1702px) {
+
+  .dropdown__item:not(:last-child) {
+    margin-right: 96px;
+  }
+
    /*Contact*/
 
    .contact__top {
@@ -3038,6 +3053,10 @@ h1, h2, h3, h4, p {
   .contact__address {
     margin-right: 80px;
     margin-bottom: 0;
+  }
+
+  .address__company-name {
+    margin: 10px 0 0;
   }
 
   .contact__btn {
