@@ -18,11 +18,13 @@ document.addEventListener("DOMContentLoaded" , function() {
 
   const burgerNav = document.querySelector(".burger")
   const menuNav = document.querySelector(".header__nav")
+  const scrollPage = document.querySelector(".page")
 
   burgerNav.addEventListener("click", mobileNav)
   function mobileNav () {
     burgerNav.classList.toggle("burger_active")
     menuNav.classList.toggle("header__nav_active")
+    scrollPage.classList.toggle("scroll__disabel")
   }
 
   const navLink = document.querySelectorAll(".nav__link")
@@ -40,20 +42,24 @@ document.addEventListener("DOMContentLoaded" , function() {
 
   /*Search*/
 
-  document.querySelector(".search__btn-open").addEventListener("click", function() {
-    document.querySelector(".search__form").classList.add("search__form_active");
-    this.classList.add("active");
-  })
+  const searchBtn = document.querySelector(".search__btn");
+  const searchClose = document.querySelector(".search__btn-close");
+  const searchForm = document.querySelector(".search__form");
+  const searchInput = document.querySelector(".search__input");
 
-  document.addEventListener("click", function(e) {
-    let target = e.target;
-    let form = document.querySelector(".search__form");
-    if (!target.closest(".search-top")) {
-      form.classList.remove("search__form_active");
-        form.querySelector(".search__input").value = "";
-        document.querySelector(".search__btn-open").classList.remove("active")
-    }
-  })
+  searchBtn.onclick = () => {
+    searchForm.classList.add("active");
+    searchInput.classList.add("active");
+    searchClose.classList.add("active");
+    searchBtn.classList.add("active");
+  }
+
+  searchClose.onclick = () => {
+    searchForm.classList.remove("active");
+    searchInput.classList.remove("active");
+    searchClose.classList.remove("active");
+    searchBtn.classList.remove("active");
+  }
 
   /*Select*/
 
@@ -106,6 +112,11 @@ document.addEventListener("DOMContentLoaded" , function() {
     }
   
   })
+
+  const myModal = new HystModal({
+    linkAttributeName: "data-hystmodal",
+    // настройки (не обязательно), см. API
+  });
 
   /*Accordion*/
 
